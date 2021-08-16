@@ -5,10 +5,11 @@ using UnityEngine;
 public class Attacker : MonoBehaviour
 {
     [Range(0f, 5f)]float currentSpeed = 1f;
-    // Start is called before the first frame update
+    GameObject currentTarget;
+
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -20,5 +21,11 @@ public class Attacker : MonoBehaviour
     public void SetMovementSpeed(float speed)
     {
         currentSpeed = speed;
+    }
+
+    public void Attack(GameObject target)
+    {
+        GetComponent<Animator>().SetBool("isAttacking", true);
+        currentTarget = target;
     }
 }
