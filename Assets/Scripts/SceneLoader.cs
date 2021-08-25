@@ -26,4 +26,8 @@ public class SceneLoader : MonoBehaviour
         LoadNextScene();
     }
 
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
 }
