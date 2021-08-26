@@ -15,6 +15,17 @@ public class SceneLoader : MonoBehaviour
             StartCoroutine(WaitForTime());
         }
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void MainMenuScene()
+    {
+        SceneManager.LoadScene("Start Screen");
+    }
+
     public void LoadNextScene()
     {
         SceneManager.LoadScene(currentSceneIndex + 1);

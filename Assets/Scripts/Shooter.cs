@@ -19,14 +19,10 @@ public class Shooter : MonoBehaviour
     {
         if (IsAttackerInLane())
         {
-            Debug.Log("shot pipiu");
-            //TO DO change animation state to shooting
             animator.SetBool("IsAttacking", true);
         }
         else
         {
-            Debug.Log("Sit and wait");
-            //TO DO change animation state to idle
             animator.SetBool("IsAttacking", false);
         }
         
