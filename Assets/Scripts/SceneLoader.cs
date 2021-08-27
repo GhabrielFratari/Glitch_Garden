@@ -18,11 +18,13 @@ public class SceneLoader : MonoBehaviour
 
     public void RestartScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(currentSceneIndex);
     }
 
     public void MainMenuScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Start Screen");
     }
 
@@ -40,5 +42,10 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameOver()
     {
         SceneManager.LoadScene("Game Over");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
