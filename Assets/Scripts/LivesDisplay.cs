@@ -4,25 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LivesDisplay : MonoBehaviour
 {
-    [SerializeField] int health = 500;
+    [SerializeField] float baseLives = 3;
+    [SerializeField] int damage = 1;
+    float lives;
     Text healthText;
 
     private void Start()
     {
+        lives = baseLives - PlayerPrefsController.GetMasterDifficulty();
         healthText = GetComponent<Text>();
         UpdateDisplay();
     }
 
     private void UpdateDisplay()
     {
-        healthText.text = health.ToString();
+        healthText.text = lives.ToString();
     }
 
     public void DealDamage()
     {
-        health-= 100;
+        lives -= damage;
         UpdateDisplay();
-        if (health <= 0)
+        if (lives <= 0)
         {
             FindObjectOfType<LevelController>().YouLose();
         }

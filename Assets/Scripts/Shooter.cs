@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -6,13 +7,25 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     [SerializeField] GameObject projectile, gun;
+    GameObject projectileParent;
     AttackerSpawner myLaneSpawner;
     Animator animator;
+    const string PROJECTILE_PARENT_NAME = "Projectiles";
 
     private void Start()
     {
+        CreateProjectileParent();
         SetLaneSpawner();
         animator = GetComponent<Animator>();
+    }
+
+    private void CreateProjectileParent()
+    {
+        projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
+        if (!projectileParent)
+        {
+            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
+        }
     }
 
     private void Update()
@@ -53,8 +66,8 @@ public class Shooter : MonoBehaviour
 
     public void Fire()
     {
-        Instantiate(projectile, gun.transform.position, gun.transform.rotation);
-        
+        GameObject newProjectile = Instantiate(projectile, gun.transform.position, gun.transform.rotation);
+        newProjectile.transform.parent = projectileParent.transform;
     }
 
 }
